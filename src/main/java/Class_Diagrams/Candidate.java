@@ -11,13 +11,23 @@ public class Candidate extends User {
 	private String token;
 	private boolean completedSoft;
 	private boolean completedHard;
-	private Collection<Results> results;
+	private Results results;					// changed from collection
 	private TestHard testHard;
 	private TestSoft testSoft;
 
 	public Candidate() {
 		// TODO - implement Candidate.Candidate
 		throw new UnsupportedOperationException();
+	}
+
+	public  Candidate(String name, String surname) {
+
+		this.name = name;
+		this.surname = surname;
+		this.completedHard = false;
+		this.completedSoft = false;
+		// generate new Result obj
+		this.results = new Results();
 	}
 
 	/**
@@ -78,4 +88,18 @@ public class Candidate extends User {
 		return (Results) this.results;
 	}
 
+	@Override
+	public String toString() {
+		return "Candidate{" +
+				"name='" + name + '\'' +
+				", surname='" + surname + '\'' +
+				", team=" + team +
+				", token='" + token + '\'' +
+				", completedSoft=" + completedSoft +
+				", completedHard=" + completedHard +
+				", results=" + results +
+				", testHard=" + testHard +
+				", testSoft=" + testSoft +
+				'}';
+	}
 }

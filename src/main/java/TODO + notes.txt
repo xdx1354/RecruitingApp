@@ -1,0 +1,9 @@
+Odpowiedzi z pytań są mapowane na Integer w QuestionHardSkills, ale możliwe że trzeba to zostawić jako
+char i po prostu pobierać odpowiedź na zadanie pytanie też jako char z klawiatury.
+
+ Pytania i odpowiedzi muszą mieć ten sam klucz w swoich hashmapach bo inaczej sie wypierdoli.
+ Nie ma póki co obsługi błedu jak pytanie nie zostanie znalezione dla odpowiedzi u użytkownika
+
+
+
+

@@ -1,12 +1,14 @@
 package Class_Diagrams;
 
+import java.util.HashMap;
+
 public class QuestionSoftSkills extends Question {
 
 	private Integer lengthMax;
 
-	public QuestionSoftSkills() {
-		// TODO - implement QuestionSoftSkills.QuestionSoftSkills
-		throw new UnsupportedOperationException();
+	public QuestionSoftSkills(HashMap<Integer, Question> questions) {
+		super(questions);
+
 	}
 
 }
