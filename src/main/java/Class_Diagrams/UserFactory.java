@@ -1,25 +1,22 @@
 package Class_Diagrams;
 
 public class UserFactory {
-	// TODO: ????
-//	private static CandidateFactory instance;
-	private  CandidateBuilder candidateBuilder;
+	private static UserFactory instance;
 	private Integer idLast;
 
-
-	private void CandidateFactory() {
-		// TODO - implement UserFactory.CandidateFactory
-		throw new UnsupportedOperationException();
+	private UserFactory() {
+		idLast = 0;
 	}
 
-	public UserFactory instance() {
-		// TODO - implement UserFactory.instance
-		throw new UnsupportedOperationException();
+	public static UserFactory instance() {
+		if (instance == null) {
+			instance = new UserFactory();
+		}
+		return instance;
 	}
 
 	public CandidateBuilder beginCandidate() {
-		// TODO - implement UserFactory.beginCandidate
-		throw new UnsupportedOperationException();
+		return new CandidateBuilder(idLast++);
 	}
 
 	public RecruiterBuilder beginRecruiter() {

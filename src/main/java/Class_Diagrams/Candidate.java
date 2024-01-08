@@ -4,7 +4,6 @@ import Class_Diagrams.Results;
 import java.util.*;
 
 public class Candidate extends User {
-
 	private String name;
 	private String surname;
 	private Team team;
@@ -15,25 +14,19 @@ public class Candidate extends User {
 	private TestHard testHard;
 	private TestSoft testSoft;
 
-	public Candidate() {
-		// TODO - implement Candidate.Candidate
-		throw new UnsupportedOperationException();
-	}
-
-	public  Candidate(String name, String surname) {
-
+	public Candidate(String name, String surname, Integer id, String token) {
 		this.name = name;
 		this.surname = surname;
-		this.completedHard = false;
+		this.id = id;
+		this.team = null;
+		this.token = token;
 		this.completedSoft = false;
-		// generate new Result obj
-		this.results = new Results();
+		this.completedHard = false;
+		this.results = null;
+		this.testHard = null;
+		this.testSoft = null;
 	}
 
-	/**
-	 * 
-	 * @param testNumber
-	 */
 	public Results takeTest(int testNumber) {
 		// TODO - implement Candidate.takeTest
 		throw new UnsupportedOperationException();
@@ -56,10 +49,6 @@ public class Candidate extends User {
 		return this.surname;
 	}
 
-	/**
-	 * 
-	 * @param team
-	 */
 	public void setTeam(String team) {
 		// TODO - implement Candidate.setTeam
 		throw new UnsupportedOperationException();
@@ -75,10 +64,6 @@ public class Candidate extends User {
 		throw new UnsupportedOperationException();
 	}
 
-	/**
-	 * 
-	 * @param results
-	 */
 	public void saveResults(Results results) {
 		// TODO - implement Candidate.saveResults
 		throw new UnsupportedOperationException();
