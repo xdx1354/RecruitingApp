@@ -10,7 +10,7 @@ public interface TeamsAccess {
 	 * 
 	 * @param nowyTeam
 	 */
-	void addTeam(Team nowyTeam);
+	void addTeam(Team newTeam);
 
 	/**
 	 * 
