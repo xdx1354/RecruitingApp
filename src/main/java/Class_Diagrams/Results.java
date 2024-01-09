@@ -8,7 +8,7 @@ import java.util.Map;
 public class Results {
 
 	private Map<Integer, Integer> answers1;
-	private Map<Integer, Integer> answers2;
+	private Map<Integer, String> answers2;
 	private Integer grade1;
 	private String grade2;
 	private String comment;
@@ -16,22 +16,18 @@ public class Results {
 	public Results() {
 		this.answers1 = new HashMap<>();
 		this.answers2 = new HashMap<>();
-		this.grade1 = 0;
-		this.grade2 = "brak oceny";
-		this.comment = "brak komentarza";
+		this.grade1 = null;
+		this.grade2 = null;
+		this.comment = null;
 	}
 
-	/**
-	 * 
-	 * @param Integer
-	 * @param questionID
-	 * @param choosenAnswer
-	 */
-	public void setAnswer(int Integer, int questionID, int choosenAnswer) {
-		// TODO - implement Results.setAnswer
-		throw new UnsupportedOperationException();
+	public void setAnswer(int Test, int questionID, String answer) {
+		if (Test == 1) {
+			answers1.put(questionID, QuestionHardSkills.mapAnswerToNumber(answer.charAt(0)));
+		} else {
+			answers2.put(questionID, answer);
+		}
 	}
-
 
 	@Override
 	public String toString() {
@@ -52,11 +48,11 @@ public class Results {
 		this.answers1 = answers1;
 	}
 
-	public Map<Integer, Integer> getAnswers2() {
+	public Map<Integer, String> getAnswers2() {
 		return answers2;
 	}
 
-	public void setAnswers2(Map<Integer, Integer> answers2) {
+	public void setAnswers2(Map<Integer, String> answers2) {
 		this.answers2 = answers2;
 	}
 

@@ -45,6 +45,9 @@ public abstract class Question {
 	public String getQuestionText() {
 		StringBuilder formattedText = new StringBuilder();
 		formattedText.append(text).append("\n");
+		if (answers == null) {
+			return formattedText.toString();
+		}
 		for (Map.Entry<Character, String> entry : answers.entrySet()) {
 			formattedText.append(entry.getKey()).append(". ").append(entry.getValue()).append("\n");
 		}

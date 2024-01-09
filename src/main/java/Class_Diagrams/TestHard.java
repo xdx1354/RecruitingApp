@@ -26,10 +26,10 @@ public class TestHard extends Test {
 			Integer questionId = userAnswer.getKey();
 			Integer pickedAnswer = userAnswer.getValue();
 
-			Question question = questions.get(questionId);
+			QuestionHardSkills question = questions.get(questionId);
 
-			if (question instanceof QuestionHardSkills) {
-				Integer correctAnswer = ((QuestionHardSkills) question).getAnswerCorrect();
+			if (question != null) {
+				Integer correctAnswer = question.getAnswerCorrect();
 
 				if (correctAnswer != null && correctAnswer.equals(pickedAnswer)) {
 					System.out.println("Pytanie " + questionId + ": Poprawna odpowiedź!");

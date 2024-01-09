@@ -4,14 +4,10 @@ import java.util.HashMap;
 
 public class TestSoft extends Test {
 
-	public TestSoft(HashMap<Integer, Question> questions) {
-		super(questions);
+	public TestSoft(HashMap<Integer, QuestionSoftSkills> questions) {
+		super(new HashMap<>(questions));
 	}
 
-	/**
-	 * 
-	 * @param userResults
-	 */
 	public void gradeTest(Results userResults) {
 		// TODO - implement TestSoft.gradeTest
 		throw new UnsupportedOperationException();

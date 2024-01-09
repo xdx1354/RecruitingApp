@@ -18,23 +18,57 @@ public class Candidate extends User {
 		this.name = name;
 		this.surname = surname;
 		this.id = id;
+		this.type = UserType.CANDIDATE;
 		this.team = null;
 		this.token = token;
 		this.completedSoft = false;
 		this.completedHard = false;
-		this.results = null;
+		this.results = new Results();
 		this.testHard = null;
 		this.testSoft = null;
 	}
 
-	public Results takeTest(int testNumber) {
-		// TODO - implement Candidate.takeTest
-		throw new UnsupportedOperationException();
+	public Results takeTest(Test test) {
+		test.setUser(this);
+		test.takeTest();
+		if (test instanceof TestHard) {
+			this.completedHard = true;
+			this.testHard = (TestHard) test;
+		} else {
+			this.completedSoft = true;
+			this.testSoft = (TestSoft) test;
+		}
+		return results;
 	}
 
-	public Results showResults() {
-		// TODO - implement Candidate.showResults
-		throw new UnsupportedOperationException();
+	public void showResults() {
+		if (!completedHard && !completedSoft) {
+			System.out.println("You haven't completed any test yet.");
+			return;
+		}
+
+		if (completedHard) {
+			System.out.println("- Grade for hard skills: ");
+			if (results.getGrade1() == null) {
+				System.out.println(" [Not graded yet]");
+			} else {
+				System.out.println('[' + results.getGrade1() + ']');
+			}
+		}
+		if (completedSoft) {
+			System.out.println("- Grade for soft skills: ");
+			if (results.getGrade2() == null) {
+				System.out.println(" [Not graded yet]");
+			} else {
+				System.out.println(" [" + results.getGrade2() + ']');
+			}
+			System.out.println("- Feedback for soft skills: ");
+			if (results.getComment() == null) {
+				System.out.println(" [Not provided yet]");
+			} else {
+				System.out.println(" [" + results.getComment() + ']');
+			}
+		}
 	}
 
 	public String getToken() {
@@ -70,7 +104,7 @@ public class Candidate extends User {
 	}
 
 	public Results getResults() {
-		return (Results) this.results;
+		return this.results;
 	}
 
 	@Override

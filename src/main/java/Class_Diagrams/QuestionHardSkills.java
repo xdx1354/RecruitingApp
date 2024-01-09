@@ -4,8 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class QuestionHardSkills extends Question {
-
-
 	private Character answerCorrect;
 
 	public QuestionHardSkills(Character answerCorrect, String text, Integer ID, HashMap<Character, String> answers) {
@@ -13,8 +11,7 @@ public class QuestionHardSkills extends Question {
 		this.answerCorrect = answerCorrect;
 	}
 
-
-	public int mapAnswerToNumber(char answer) {
+	static public int mapAnswerToNumber(char answer) {
 		return switch (Character.toUpperCase(answer)) {
 			case 'A' -> 1;
 			case 'B' -> 2;

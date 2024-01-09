@@ -6,9 +6,8 @@ public class QuestionSoftSkills extends Question {
 
 	private Integer lengthMax;
 
-	public QuestionSoftSkills(HashMap<Integer, Question> questions) {
-		super(questions);
-
+	public QuestionSoftSkills(String text, Integer ID) {
+		super(text, ID, null);
 	}
 
 }
