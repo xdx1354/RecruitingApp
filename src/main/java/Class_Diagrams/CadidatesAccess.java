@@ -10,7 +10,7 @@ public interface CadidatesAccess {
 	 * 
 	 * @param nowyKandydat
 	 */
-	void addCandidate(Candidate nowyKandydat);
+	void addCandidate(Candidate newCandidate);
 
 	/**
 	 * 
