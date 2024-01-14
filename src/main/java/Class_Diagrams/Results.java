@@ -20,7 +20,7 @@ public class Results {
 		this.grade2 = null;
 		this.comment = null;
 	}
-
+	//TODO: add checking if question exists
 	public void setAnswer(int Test, int questionID, String answer) {
 		if (Test == 1) {
 			answers1.put(questionID, QuestionHardSkills.mapAnswerToNumber(answer.charAt(0)));
