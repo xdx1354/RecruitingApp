@@ -1,16 +1,13 @@
 package Class_Diagrams;
 
-import Class_Diagrams.Results;
-import java.util.*;
-
 public class Candidate extends User {
 	private String name;
 	private String surname;
 	private Team team;
 	private String token;
-	private boolean completedSoft;
-	private boolean completedHard;
-	private Results results;					// changed from collection
+	public boolean completedSoft;
+	public boolean completedHard;
+	public Results results;					// changed from collection
 	private TestHard testHard;
 	private TestSoft testSoft;
 
@@ -52,7 +49,7 @@ public class Candidate extends User {
 			if (results.getGrade1() == null) {
 				System.out.println(" [Not graded yet]");
 			} else {
-				System.out.println('[' + results.getGrade1() + ']');
+				System.out.println("[" + results.getGrade1() + "]");
 			}
 		}
 		if (completedSoft) {
@@ -60,13 +57,13 @@ public class Candidate extends User {
 			if (results.getGrade2() == null) {
 				System.out.println(" [Not graded yet]");
 			} else {
-				System.out.println(" [" + results.getGrade2() + ']');
+				System.out.println(" [" + results.getGrade2() + "]");
 			}
 			System.out.println("- Feedback for soft skills: ");
 			if (results.getComment() == null) {
 				System.out.println(" [Not provided yet]");
 			} else {
-				System.out.println(" [" + results.getComment() + ']');
+				System.out.println(" [" + results.getComment() + "]");
 			}
 		}
 	}
