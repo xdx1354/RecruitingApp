@@ -11,7 +11,7 @@ public class Recruiter extends User {
 
 	/**
 	 * 
-	 * @return To powinno byæ List<Results>, ale nie wiem jak to tu ustawiæ
+	 * @return
 	 */
 	public Collection<Results> showAllResults() {
 		// TODO - implement Recruiter.showAllResults

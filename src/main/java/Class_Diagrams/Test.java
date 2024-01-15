@@ -31,9 +31,9 @@ public class Test {
 		}
 	}
 
-	public HashMap<Integer, Question> getQuestions() {
-		return questions;
-	}
+//	public HashMap<Integer, Question> getQuestions() {
+//		return questions;
+//	}
 
 	public void setQuestions(HashMap<Integer, Question> questions) {
 		this.questions = questions;

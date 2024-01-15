@@ -46,4 +46,7 @@ public class TestHard extends Test {
 		return userResults;
 	}
 
+	public HashMap<Integer, QuestionHardSkills> getQuestions() {
+		return questions;
+	}
 }
