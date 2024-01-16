@@ -83,14 +83,12 @@ public class Candidate extends User {
 		return this.surname;
 	}
 
-	public void setTeam(String team) {
-		// TODO - implement Candidate.setTeam
-		throw new UnsupportedOperationException();
+	public void setTeam(Team team) {
+		this.team = team;
 	}
 
-	public String getTeam() {
-		// TODO - implement Candidate.getTeam
-		throw new UnsupportedOperationException();
+	public Team getTeam() {
+		return this.team;
 	}
 
 	public Integer getID() {
@@ -136,5 +134,16 @@ public class Candidate extends User {
 
 	public TestSoft getTestSoft() {
 		return  testSoft;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+
+		Candidate candidate = (Candidate) o;
+
+		// Compare relevant fields, e.g., ID
+		return id.equals(candidate.id);
 	}
 }
