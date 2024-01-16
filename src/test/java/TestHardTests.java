@@ -37,11 +37,11 @@ public class TestHardTests {
     }
 
     @Test
-    void testGradeTest() {
+    void testGradeTestCorrectAnswers() {
         // Mock user results
         HashMap<Integer, Integer> mockUserAnswers = new HashMap<>();
         mockUserAnswers.put(1, 1); // Correct answer for question 1
-        mockUserAnswers.put(2, 1); // Incorrect answer for question 2
+        mockUserAnswers.put(2, 1); // Correct answer
 
         new Expectations() {{
             mockUserResults.getAnswers1(); result = mockUserAnswers;
@@ -57,5 +57,27 @@ public class TestHardTests {
             mockUserResults.setGrade1(capturedGrade = withCapture());
             assertEquals(2, capturedGrade); // or the expected value based on your logic
         }};
+    }
+
+    @Test
+    void testGradeTestInvalidAnswer() {
+        HashMap<Integer, Integer> mockUserAnswers = new HashMap<>();
+        mockUserAnswers.put(1,1); // Correct answer for question 1
+        mockUserAnswers.put(2, 7); // Invalid answer for question 2
+
+        new Expectations() {{
+            mockUserResults.getAnswers1(); result = mockUserAnswers;
+            mockUserResults.setGrade1(anyInt); // Capture the argument for setGrade1
+        }};
+
+        Results gradedResults = testHard.gradeTest(mockUserResults);
+
+        // Verify the expected grade
+        new Verifications() {{
+            int capturedGrade;
+            mockUserResults.setGrade1(capturedGrade = withCapture());
+            assertEquals(1, capturedGrade); // or the expected value based on your logic
+        }};
+
     }
 }

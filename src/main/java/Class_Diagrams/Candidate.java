@@ -10,7 +10,7 @@ public class Candidate extends User {
 	private String token;
 	private boolean completedSoft;
 	private boolean completedHard;
-	private Results results;					// changed from collection
+	private Results results;
 	private TestHard testHard;
 	private TestSoft testSoft;
 
@@ -42,31 +42,31 @@ public class Candidate extends User {
 	}
 
 	public void showResults() {
-		if (!completedHard && !completedSoft) {
+		if (!isCompletedHard() && !isCompletedSoft()) {
 			System.out.println("You haven't completed any test yet.");
 			return;
 		}
 
-		if (completedHard) {
+		if (isCompletedHard()) {
 			System.out.println("- Grade for hard skills: ");
 			if (results.getGrade1() == null) {
 				System.out.println(" [Not graded yet]");
 			} else {
-				System.out.println('[' + results.getGrade1() + ']');
+				System.out.println('[' + getResults().getGrade1() + ']');
 			}
 		}
-		if (completedSoft) {
+		if (isCompletedSoft()) {
 			System.out.println("- Grade for soft skills: ");
 			if (results.getGrade2() == null) {
 				System.out.println(" [Not graded yet]");
 			} else {
-				System.out.println(" [" + results.getGrade2() + ']');
+				System.out.println(" [" + getResults().getGrade2() + ']');
 			}
 			System.out.println("- Feedback for soft skills: ");
 			if (results.getComment() == null) {
 				System.out.println(" [Not provided yet]");
 			} else {
-				System.out.println(" [" + results.getComment() + ']');
+				System.out.println(" [" + getResults().getComment() + ']');
 			}
 		}
 	}
@@ -120,5 +120,21 @@ public class Candidate extends User {
 				", testHard=" + testHard +
 				", testSoft=" + testSoft +
 				'}';
+	}
+
+	public boolean isCompletedHard() {
+		return completedHard;
+	}
+
+	public boolean isCompletedSoft() {
+		return completedSoft;
+	}
+
+	public TestHard getTestHard() {
+		return testHard;
+	}
+
+	public TestSoft getTestSoft() {
+		return  testSoft;
 	}
 }
