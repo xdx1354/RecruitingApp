@@ -9,8 +9,7 @@ import mockit.Tested;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertSame;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CandidateTests {
 
@@ -22,6 +21,9 @@ public class CandidateTests {
 
     @Injectable
     private Results mockResults;
+
+    @Injectable
+    private Class_Diagrams.Test mockTest;
 
     @Tested
     private Candidate candidate;
@@ -59,6 +61,15 @@ public class CandidateTests {
         assertTrue(candidate.isCompletedSoft());
 
         assertSame(mockTestSoft, candidate.getTestSoft());
+    }
+
+    @Test
+    void testTakeTestWithUndefinedTestType() {
+
+        assertThrows(RuntimeException.class, () -> {
+            candidate.takeTest(mockTest);
+        });
+
     }
 
 

@@ -34,9 +34,11 @@ public class Candidate extends User {
 		if (test instanceof TestHard) {
 			this.completedHard = true;
 			this.testHard = (TestHard) test;
-		} else {
+		} else if(test instanceof TestSoft){
 			this.completedSoft = true;
 			this.testSoft = (TestSoft) test;
+		} else {
+			throw new RuntimeException("Undefined test type passed");
 		}
 		return results;
 	}

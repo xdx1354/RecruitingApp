@@ -19,7 +19,7 @@ public class TeamTests {
     @Test
     void testMemberAdd() {
         Team team = new Team("10", "Hr");
-        Candidate candidate = new Candidate("John", "Doe", 1, "123");
+        Candidate candidate = new Candidate("Jan", "Kowalski", 1, "123");
 
         // Test case
         team.memberAdd(candidate);
@@ -33,7 +33,8 @@ public class TeamTests {
 
         Team team = new Team("10", "Hr");
         // Add a member to the team
-        Candidate candidate = new Candidate("John", "Doe", 1, "123");
+        Candidate candidate = new Candidate("Jan", "Kowalski", 1, "123");
+
         team.memberAdd(candidate);
 
         // Attempt to add the same member again
@@ -48,7 +49,8 @@ public class TeamTests {
 
         Team team = new Team("10", "Hr");
         // Add a member to the team
-        Candidate candidate = new Candidate("John", "Doe", 1, "123");
+        Candidate candidate = new Candidate("Jan", "Kowalski", 1, "123");
+
         team.memberAdd(candidate);
         team.membersPrint();
 
@@ -70,7 +72,8 @@ public class TeamTests {
         System.setOut(new PrintStream(outputStream));
 
         // Attempt to delete a member not present in the team
-        Candidate candidate = new Candidate("Jane", "Smith", 2, "456");
+        Candidate candidate = new Candidate("Jan", "Kowalski", 1, "423");
+
         team.memberDelete(candidate);
 
         // Verify that the console message indicates the member was not present

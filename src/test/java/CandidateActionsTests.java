@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 
 public class CandidateActionsTests {
-//    CandidateActionsTests(){};
+
 
     @Injectable
     private Candidate mockCandidate;
