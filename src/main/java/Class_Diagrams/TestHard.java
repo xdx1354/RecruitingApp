@@ -26,7 +26,12 @@ public class TestHard extends Test {
 			Integer questionId = userAnswer.getKey();
 			Integer pickedAnswer = userAnswer.getValue();
 
-			QuestionHardSkills question = questions.get(questionId);
+			QuestionHardSkills question = null;
+			try {
+				question = questions.get(questionId);
+			} catch (IndexOutOfBoundsException e) {
+				System.out.println("Index is out of bounds. No element at the specified index.");
+			}
 
 			if (question != null) {
 				Integer correctAnswer = question.getAnswerCorrect();
@@ -38,7 +43,7 @@ public class TestHard extends Test {
 					System.out.println("Pytanie " + questionId + ": Niepoprawna odpowiedź.");
 				}
 			} else {
-				System.out.println("Pytanie " + questionId + ": Niepoprawny typ pytania.");
+				System.out.print("Pytanie " + questionId + ": Niepoprawny typ pytania lub brak pytania o danym ID.");
 			}
 		}
 

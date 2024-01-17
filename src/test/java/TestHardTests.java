@@ -8,6 +8,8 @@ import mockit.Verifications;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.HashMap;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -16,6 +18,7 @@ public class TestHardTests {
 
     @Injectable
     private Results mockUserResults;
+
 
     @Tested
     private TestHard testHard;
@@ -45,7 +48,7 @@ public class TestHardTests {
 
         new Expectations() {{
             mockUserResults.getAnswers1(); result = mockUserAnswers;
-            mockUserResults.setGrade1(anyInt); // Capture the argument for setGrade1
+            mockUserResults.setGrade1(anyInt);
         }};
 
         // Call the method under test
@@ -55,7 +58,7 @@ public class TestHardTests {
         new Verifications() {{
             int capturedGrade;
             mockUserResults.setGrade1(capturedGrade = withCapture());
-            assertEquals(2, capturedGrade); // or the expected value based on your logic
+            assertEquals(2, capturedGrade);
         }};
     }
 
@@ -67,7 +70,7 @@ public class TestHardTests {
 
         new Expectations() {{
             mockUserResults.getAnswers1(); result = mockUserAnswers;
-            mockUserResults.setGrade1(anyInt); // Capture the argument for setGrade1
+            mockUserResults.setGrade1(anyInt);  // capturing setting mockUserResults.setGrade1() to be visible outside
         }};
 
         Results gradedResults = testHard.gradeTest(mockUserResults);
@@ -76,8 +79,30 @@ public class TestHardTests {
         new Verifications() {{
             int capturedGrade;
             mockUserResults.setGrade1(capturedGrade = withCapture());
-            assertEquals(1, capturedGrade); // or the expected value based on your logic
+            assertEquals(1, capturedGrade);
         }};
 
+    }
+
+    @Test
+    void testGradeTestWithInvalidQuestionId() {
+        // Redirect standard output to capture console messages
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
+
+
+        Results userResults = new Results();
+        HashMap<Integer, Integer> answers = new HashMap<>();
+        answers.put(100, 1); // Assuming 100 is an invalid questionId
+        userResults.setAnswers1(answers);
+
+
+        mockUserResults = testHard.gradeTest(userResults);
+
+
+        assertEquals("Pytanie 100: Niepoprawny typ pytania lub brak pytania o danym ID.", outputStream.toString());
+
+
+        System.setOut(System.out);
     }
 }
