@@ -1,5 +1,8 @@
 package Class_Diagrams;
 
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -12,14 +15,7 @@ public class CandidateActions implements TestAccess {
     }
 
     public void menuCandidate() {
-        System.out.println("\nWelcome " + candidate.getName() + " " + candidate.getSurname() + "!");
-        System.out.println("What would you like to do?");
-        System.out.println("1. Take test hard skills");
-        System.out.println("2. Take test soft skills");
-        System.out.println("3. Show results");
-        System.out.println("4. Send results");
-        System.out.println("5. Log out");
-        System.out.print(": ");
+        displayChoices();
 
         Scanner scanner = new Scanner(System.in);
         int choice = scanner.nextInt();
@@ -98,6 +94,17 @@ public class CandidateActions implements TestAccess {
         questionSoftSkillsHashMap.put(2, questionSoftSkills2);
 
         return new TestSoft(questionSoftSkillsHashMap);
+    }
+
+    public void displayChoices() {
+        System.out.println("\nWelcome " + candidate.getName() + " " + candidate.getSurname() + "!");
+        System.out.println("What would you like to do?");
+        System.out.println("1. Take test hard skills");
+        System.out.println("2. Take test soft skills");
+        System.out.println("3. Show results");
+        System.out.println("4. Send results");
+        System.out.println("5. Log out");
+        System.out.print(": ");
     }
 
     @Override

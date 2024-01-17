@@ -11,7 +11,7 @@ public class CandidateBuilder {
 		name = "<EMPTY>";
 		surname = "<EMPTY>";
 		this.id = id;
-		token = generateToken();
+		token = "";
 	}
 
 	public CandidateBuilder addNameSurname(String name, String surname) {
@@ -21,6 +21,7 @@ public class CandidateBuilder {
 	}
 
 	public Candidate build() {
+		token = generateToken();
 		return new Candidate(name, surname, id, token);
 	}
 

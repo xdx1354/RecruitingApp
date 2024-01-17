@@ -1,30 +1,42 @@
-import Class_Diagrams.Candidate;
-import Class_Diagrams.CandidateActions;
-import Class_Diagrams.QuestionHardSkills;
-import Class_Diagrams.TestHard;
-import mockit.Expectations;
-import mockit.Injectable;
+import Class_Diagrams.*;
+import mockit.*;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class CandidateActionsTests {
-//    CandidateActionsTests(){};
 
+    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    private final PrintStream originalOut = System.out;
+    private final InputStream originalIn = System.in;
     @Injectable
     private Candidate mockCandidate;
+    @Tested
+    private CandidateActions candidateActions;
+
+    @BeforeEach
+    void setUp() {
+        System.setOut(new PrintStream(outContent));
+    }
+
+    @AfterEach
+    void tearDown() {
+        System.setOut(originalOut);
+        System.setIn(originalIn);
+    }
 
     @Test
-    public void testGetTestHard() {
-
-        // Create CandidateActions with the mockCandidate
-        CandidateActions candidateActions = new CandidateActions(mockCandidate);
+    void testGetTestHard() {
+        candidateActions = new CandidateActions(mockCandidate);
 
         // Call the method under test
         TestHard testHard = candidateActions.getTestHard();
@@ -58,4 +70,23 @@ public class CandidateActionsTests {
         assertEquals("NIE", answers2.get('B'));
     }
 
+    @Test
+    void testDisplayChoices() {
+        new Expectations(){{
+            mockCandidate = UserFactory.instance().beginCandidate().addNameSurname("A", "B").build();
+            candidateActions = new CandidateActions(mockCandidate);
+        }};
+
+        candidateActions.displayChoices();
+        String consoleOutput = outContent.toString();
+
+        assertTrue(consoleOutput.contains("Welcome A B!"));
+        assertTrue(consoleOutput.contains("What would you like to do?"));
+        assertTrue(consoleOutput.contains("1."));
+        assertTrue(consoleOutput.contains("2."));
+        assertTrue(consoleOutput.contains("3."));
+        assertTrue(consoleOutput.contains("4."));
+        assertTrue(consoleOutput.contains("5."));
+        assertTrue(consoleOutput.contains(": "));
+    }
 }
