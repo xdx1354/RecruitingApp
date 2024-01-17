@@ -65,13 +65,13 @@ public class AdminActions implements CadidatesAccess, TeamsAccess, TestAccess, w
 	}
 
 	@Override
-	public void addTeam(Team nowyTeam) {
-
+	public void addTeam(Team newTeam) {
+		listOfTeams.add(newTeam);
 	}
 
 	@Override
-	public void deleteTeam(int teamID) {
-
+	public boolean deleteTeam(String teamID) {
+		return  false;
 	}
 
 	@Override
@@ -80,7 +80,7 @@ public class AdminActions implements CadidatesAccess, TeamsAccess, TestAccess, w
 	}
 
 	@Override
-	public Team getTeam(int teamID) {
+	public Team getTeam(String teamID) {
 		return null;
 	}
 

@@ -1,14 +1,15 @@
 package Class_Diagrams;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public interface TeamsAccess {
 
-	List<Team> listOfTeams = null;
+	List<Team> listOfTeams = new ArrayList<>();
 
 	/**
 	 * 
-	 * @param nowyTeam
+	 * @param newTeam
 	 */
 	void addTeam(Team newTeam);
 
@@ -16,7 +17,7 @@ public interface TeamsAccess {
 	 * 
 	 * @param teamID
 	 */
-	void deleteTeam(int teamID);
+	boolean deleteTeam(String teamID);
 
 	/**
 	 * 
@@ -28,6 +29,6 @@ public interface TeamsAccess {
 	 * 
 	 * @param teamID
 	 */
-	Team getTeam(int teamID);
+	Team getTeam(String teamID);
 
 }

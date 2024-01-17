@@ -8,8 +8,8 @@ public interface CadidatesAccess {
 
 	/**
 	 * 
-	 * @param nowyKandydat
-	 */
+	 * @param newCandidate
+	 * */
 	void addCandidate(Candidate newCandidate);
 
 	/**

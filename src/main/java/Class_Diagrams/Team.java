@@ -53,4 +53,8 @@ public class Team {
 	public Collection<Candidate> getMembers() {
 		return members;
 	}
+
+	public String getId(){
+		return  this.id;
+	}
 }

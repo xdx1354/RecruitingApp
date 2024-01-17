@@ -24,14 +24,22 @@ public class RectuiterActions implements CadidatesAccess {
 		throw new UnsupportedOperationException();
 	}
 
-	public void createTeams() {
-		// TODO - implement RectuiterActions.createTeams
-		throw new UnsupportedOperationException();
+	public boolean addTeam(String teamID, String teamName) {
+		if (recruiter != null) {
+			return recruiter.createTeam(teamID, teamName);
+		} else {
+			System.out.println("Recruiter not initialized.");
+			return false;
+		}
 	}
 
 	public void showAllResults() {
 		// TODO - implement RectuiterActions.showAllResults
 		throw new UnsupportedOperationException();
+	}
+
+	public void setRecruiter(Recruiter recruiter) {
+		this.recruiter = recruiter;
 	}
 
 	@Override

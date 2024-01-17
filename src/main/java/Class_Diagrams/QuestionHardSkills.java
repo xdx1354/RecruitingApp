@@ -12,13 +12,14 @@ public class QuestionHardSkills extends Question {
 	}
 
 	static public int mapAnswerToNumber(char answer) {
-		return switch (Character.toUpperCase(answer)) {
-			case 'A' -> 1;
-			case 'B' -> 2;
-			case 'C' -> 3;
-			case 'D' -> 4;
-			default -> -1; // Return -1 for invalid input or other characters
-		};
+		return 1;
+//		return switch (Character.toUpperCase(answer)) {
+//			case 'A' -> 1;
+//			case 'B' -> 2;
+//			case 'C' -> 3;
+//			case 'D' -> 4;
+//			default -> -1; // Return -1 for invalid input or other characters
+//		};
 	}
 
 	public Integer getAnswerCorrect() {

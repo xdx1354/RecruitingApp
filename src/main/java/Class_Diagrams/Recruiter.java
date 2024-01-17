@@ -2,11 +2,14 @@ package Class_Diagrams;
 
 import java.util.*;
 
-public class Recruiter extends User {
+public class Recruiter extends User implements TeamsAccess {
 
-	public Recruiter Recruiter() {
-		// TODO - implement Recruiter.Recruiter
-		throw new UnsupportedOperationException();
+	TeamsAccess teamsAccess;
+
+	public Recruiter(int id) {
+		super.id = id;
+		super.type = UserType.RECRUITER;
+
 	}
 
 	/**
@@ -27,9 +30,28 @@ public class Recruiter extends User {
 		throw new UnsupportedOperationException();
 	}
 
-	public void createTeam() {
-		// TODO - implement Recruiter.createTeam
-		throw new UnsupportedOperationException();
+	/*
+	Returns true if team was successfully added
+	Returns false if team wasn't added due to:
+	- empty ID
+	- empty teamName
+	- already existing (Checked by ID)
+	 */
+	public boolean createTeam(String teamId, String teamName) {
+
+		if(teamId.isEmpty()){
+			return  false;
+		}
+		if(teamName.isEmpty()){
+			return false;
+		}
+
+		if(!listOfTeams.contains(getTeam(teamId))){
+			Team newTeam = new Team(teamId, teamName);
+			addTeam(newTeam);
+			return true;
+		};
+		return false;
 	}
 
 	/**
@@ -47,4 +69,38 @@ public class Recruiter extends User {
 		throw new UnsupportedOperationException();
 	}
 
+
+	@Override
+	public void addTeam(Team newTeam) {
+		listOfTeams.add(newTeam);
+	}
+
+	@Override
+	public boolean deleteTeam(String teamID) {
+
+		for (Team t: listOfTeams) {
+			if(Objects.equals(t.getId(), teamID)) {
+				listOfTeams.remove(t);
+				return true;
+			}
+		};
+
+		return  false;
+	}
+
+	@Override
+	public void updateTeam(int teamID) {
+
+	}
+
+	@Override
+	public Team getTeam(String teamID) {
+
+		for (Team t: listOfTeams) {
+			if(Objects.equals(t.getId(), teamID)) {
+				return t;
+			}
+		};
+		return null;
+	}
 }
