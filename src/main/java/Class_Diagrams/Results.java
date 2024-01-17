@@ -1,8 +1,6 @@
 package Class_Diagrams;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class Results {
@@ -22,11 +20,13 @@ public class Results {
 	}
 	//TODO: add checking if question exists
 	public void setAnswer(int Test, int questionID, String answer) {
+		if (questionID > 0) {
 		if (Test == 1) {
 			answers1.put(questionID, QuestionHardSkills.mapAnswerToNumber(answer.charAt(0)));
 		} else {
 			answers2.put(questionID, answer);
 		}
+	}
 	}
 
 	@Override

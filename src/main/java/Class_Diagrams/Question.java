@@ -45,6 +45,9 @@ public abstract class Question {
 	public String getQuestionText() {
 		StringBuilder formattedText = new StringBuilder();
 		formattedText.append(text).append("\n");
+		if(text==null){
+			return "To pytanie nie zawiera tekstu";
+		}
 		if (answers == null) {
 			return formattedText.toString();
 		}
