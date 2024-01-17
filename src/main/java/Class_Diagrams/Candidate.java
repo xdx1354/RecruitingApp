@@ -54,7 +54,7 @@ public class Candidate extends User {
 			if (results.getGrade1() == null) {
 				System.out.println(" [Not graded yet]");
 			} else {
-				System.out.println('[' + getResults().getGrade1() + ']');
+				System.out.print('[' + getResults().getGrade1() + ']');
 			}
 		}
 		if (isCompletedSoft()) {
@@ -105,6 +105,17 @@ public class Candidate extends User {
 
 	public Results getResults() {
 		return this.results;
+	}
+	public  void setResults(Results results) {
+		this.results = results;
+	}
+
+	public void setCompletedSoft(boolean bool) {
+		this.completedSoft = bool;
+	}
+
+	public void setCompletedHard( boolean bool) {
+		this.completedHard = bool;
 	}
 
 	@Override

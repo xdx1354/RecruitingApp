@@ -22,7 +22,7 @@ public class QuestionTest {
 
         HashMap<Character, String> answers2 = null;
         Integer ID2 = 2;
-        String text2 = "What is the meaning of life?";
+        String text2 = "Jaki jest sens zycia?";
         ;
         HashMap<Character, String> answers3 = null;
         Integer ID3 = 3;
