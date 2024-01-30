@@ -1,28 +1,23 @@
 package Class_Diagrams;
 
-import java.util.List;
-
 public interface workersAccess {
-
-	List<Worker> listOfWorkers = null;
-
 	/**
-	 * 
 	 * @param nowyRekruter
+	 * @return
 	 */
-	void addRecruiter(int nowyRekruter);
+	boolean addRecruiter(Recruiter nowyRekruter);
 
 	/**
-	 * 
 	 * @param recruiterID
+	 * @return
 	 */
-	void deleteRecruiter(int recruiterID);
+	boolean deleteRecruiter(int recruiterID);
 
 	/**
-	 * 
 	 * @param recruiterID
+	 * @return
 	 */
-	void updateRecruiter(int recruiterID);
+	boolean updateRecruiter(int recruiterID);
 
 	/**
 	 * 

@@ -94,8 +94,7 @@ public class Candidate extends User {
 	}
 
 	public Integer getID() {
-		// TODO - implement Candidate.getID
-		throw new UnsupportedOperationException();
+		return this.id;
 	}
 
 	public void saveResults(Results results) {

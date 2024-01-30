@@ -56,18 +56,21 @@ public class Login implements workersAccess, CadidatesAccess {
 	}
 
 	@Override
-	public void addRecruiter(int nowyRekruter) {
+	public boolean addRecruiter(Recruiter nowyRekruter) {
 
+		return false;
 	}
 
 	@Override
-	public void deleteRecruiter(int recruiterID) {
+	public boolean deleteRecruiter(int recruiterID) {
 
+		return false;
 	}
 
 	@Override
-	public void updateRecruiter(int recruiterID) {
+	public boolean updateRecruiter(int recruiterID) {
 
+		return false;
 	}
 
 	@Override

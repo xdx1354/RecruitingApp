@@ -2,6 +2,7 @@ package FitNesseTests;
 
 import Class_Diagrams.Recruiter;
 import Class_Diagrams.RectuiterActions;
+import Class_Diagrams.Team;
 import Class_Diagrams.TeamsAccess;
 
 public class RecruiterActionsFixture {
@@ -15,10 +16,10 @@ public class RecruiterActionsFixture {
         recruiterActions.setRecruiter(recruiter);
 
         // filling with initial data
-//        Team t1 = new Team("1", "Team1");
-//        teamsAccess.addTeam(t1);
-//        Team t2 = new Team("2", "Team2");
-//        teamsAccess.addTeam(t2);
+        Team t1 = new Team("1", "Team1");
+        teamsAccess.addTeam(t1);
+        Team t2 = new Team("2", "Team2");
+        teamsAccess.addTeam(t2);
     }
 
     /*

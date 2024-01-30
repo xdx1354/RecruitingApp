@@ -2,7 +2,7 @@ package Class_Diagrams;
 
 import java.util.*;
 
-public class Recruiter extends User implements TeamsAccess {
+public class Recruiter extends Worker implements TeamsAccess {
 
 	TeamsAccess teamsAccess;
 
@@ -102,5 +102,15 @@ public class Recruiter extends User implements TeamsAccess {
 			}
 		};
 		return null;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (obj == null) return false;
+		if (!(obj instanceof Recruiter))
+			return false;
+		if (obj == this)
+			return true;
+		return Objects.equals(this.getId(), ((Recruiter) obj).getId());
 	}
 }

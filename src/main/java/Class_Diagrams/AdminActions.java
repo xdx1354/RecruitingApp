@@ -1,8 +1,12 @@
 package Class_Diagrams;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class AdminActions implements CadidatesAccess, TeamsAccess, TestAccess, workersAccess {
 
 	private Admin admin;
+	public List<Worker> listOfWorkers = new ArrayList<>();
 
 	public void MenuAdmin() {
 		// TODO - implement AdminActions.MenuAdmin
@@ -36,11 +40,6 @@ public class AdminActions implements CadidatesAccess, TeamsAccess, TestAccess, w
 
 	public void changeRecruiterData() {
 		// TODO - implement AdminActions.changeRecruiterData
-		throw new UnsupportedOperationException();
-	}
-
-	public Integer addRectuiter() {
-		// TODO - implement AdminActions.addRectuiter
 		throw new UnsupportedOperationException();
 	}
 
@@ -105,18 +104,49 @@ public class AdminActions implements CadidatesAccess, TeamsAccess, TestAccess, w
 	}
 
 	@Override
-	public void addRecruiter(int nowyRekruter) {
-
+	public boolean addRecruiter(Recruiter nowyRekruter) {
+		if (nowyRekruter == null) {
+			return false;
+		}
+		if (nowyRekruter.getId() < 0) {
+			return false;
+		}
+		if (listOfWorkers == null) {
+			listOfWorkers = new ArrayList<>();
+		}
+		if (!listOfWorkers.contains(nowyRekruter)) {
+			listOfWorkers.add(nowyRekruter);
+			return true;
+		}
+		return false;
 	}
 
 	@Override
-	public void deleteRecruiter(int recruiterID) {
-
+	public boolean deleteRecruiter(int recruiterID) {
+		if (listOfWorkers == null) {
+			return false;
+		}
+		for (Worker w : listOfWorkers) {
+			if (w.getId() == recruiterID) {
+				listOfWorkers.remove(w);
+				return true;
+			}
+		}
+		return false;
 	}
 
 	@Override
-	public void updateRecruiter(int recruiterID) {
-
+	public boolean updateRecruiter(int recruiterID) {
+		if (listOfWorkers == null) {
+			return false;
+		}
+		for (Worker w : listOfWorkers) {
+			if (w.getId() == recruiterID) {
+				w.password = "password";
+				return true;
+			}
+		}
+		return false;
 	}
 
 	@Override
