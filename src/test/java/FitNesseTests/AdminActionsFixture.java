@@ -2,6 +2,9 @@ package FitNesseTests;
 
 import Class_Diagrams.*;
 
+import java.util.Objects;
+import java.util.Optional;
+
 public class AdminActionsFixture {
     public Admin admin;
     public AdminActions adminActions;
@@ -33,5 +36,15 @@ public class AdminActionsFixture {
 
     public void setRecruiterID(int recruiterID) {
         this.recruiterID = recruiterID;
+    }
+
+    public String getPassword() {
+        Optional<Worker> worker =
+                adminActions.listOfWorkers
+                        .stream()
+                        .filter(r -> Objects.equals(r.getId(), recruiterID))
+                        .findFirst();
+
+        return worker.map(Worker::getPassword).orElse(null);
     }
 }
